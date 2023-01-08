@@ -15,9 +15,14 @@ const HomePage = () => {
         display={isNoneMobileScreens ? "flex" : "block"}
         justifyContent="space-between"
       >
-        <Box flexBasis={isNoneMobileScreens ? "26r%" : undefined}>
+        <Box flexBasis={isNoneMobileScreens ? "26%" : undefined}>
           <UserWidget userId={_id} picturePath={picturePath}></UserWidget>
         </Box>
+        <Box
+          flexBasis={isNoneMobileScreens ? "42%" : undefined}
+          mt={isNonMobileScreens ? undefined : "2rem"}
+        ></Box>
+        {isNoneMobileScreens && <Box flexBasis="26%"></Box>}
       </Box>
     </Box>
   );
