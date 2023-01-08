@@ -14,9 +14,9 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist"; //So we can save the state in local state (even if you exit the website)
+} from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { PersistGate } from "redux-persist/lib/integration/react";
+import { PersistGate } from "redux-persist/integration/react";
 
 const persistConfig = { key: "root", storage, version: 1 };
 const persistedReducer = persistReducer(persistConfig, authReducer);

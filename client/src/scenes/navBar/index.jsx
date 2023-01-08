@@ -9,8 +9,7 @@ import {
   FormControl,
   useTheme,
   useMediaQuery,
-  Input,
-  Icon,
+  Menu,
 } from "@mui/material";
 
 import {
@@ -20,7 +19,6 @@ import {
   LightMode,
   Notifications,
   Help,
-  Menu,
   Close,
 } from "@mui/icons-material";
 
@@ -35,19 +33,19 @@ const NavBar = () => {
   const user = useSelector((state) => state.user);
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)"); //Find out if we are in small screen or not
 
-  const theme = useTheme(); //Predetermined colors from mode
+  const theme = useTheme();
   const neutralLight = theme.palette.neutral.light;
   const dark = theme.palette.neutral.dark;
   const background = theme.palette.background.default;
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
 
-  const fullName = `${user.firstName} ${user.lastName}`;
+  const fullName = "John Cena"; //`${user.firstName} ${user.lastName}`;
 
   //Clamp: CSS, prefers to be 2rem, but will range from 1rem to 2.25rem
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
-      <FlexBetween gap="1.75">
+      <FlexBetween gap="1.75rem">
         <Typography
           fontWeight="bold"
           fontSize="clamp(1rem, 2rem, 2.25rem)"
@@ -69,13 +67,15 @@ const NavBar = () => {
             gap="3rem"
             padding="0.1rem 1.5rem"
           >
-            <InputBase placeholder="Search..."></InputBase>
+            <InputBase placeholder="Search..." />
             <IconButton>
               <Search />
             </IconButton>
           </FlexBetween>
         )}
       </FlexBetween>
+
+      {/* DESKTOP NAV */}
       {isNonMobileScreens ? (
         <FlexBetween gap="2rem">
           <IconButton onClick={() => dispatch(setMode())}>
@@ -96,7 +96,7 @@ const NavBar = () => {
                 width: "150px",
                 borderRadius: "0.25rem",
                 p: "0.25rem 1rem",
-                "& .MuiSvgIcon-root:": {
+                "& .MuiSvgIcon-root": {
                   pr: "0.25rem",
                   width: "3rem",
                 },
@@ -109,15 +109,19 @@ const NavBar = () => {
               <MenuItem value={fullName}>
                 <Typography>{fullName}</Typography>
               </MenuItem>
-              <MenuItem onClick={() => dispatch(setLogout())}>LogOut</MenuItem>
+              <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
             </Select>
           </FormControl>
         </FlexBetween>
       ) : (
         <IconButton
           onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}
-        ></IconButton>
+        >
+          <Menu />
+        </IconButton>
       )}
+
+      {/* MOBILE NAV */}
       {!isNonMobileScreens && isMobileMenuToggled && (
         <Box
           position="fixed"
@@ -137,7 +141,8 @@ const NavBar = () => {
               <Close />
             </IconButton>
           </Box>
-          {/* Menu Items */}
+
+          {/* MENU ITEMS */}
           <FlexBetween
             display="flex"
             flexDirection="column"
@@ -166,7 +171,7 @@ const NavBar = () => {
                   width: "150px",
                   borderRadius: "0.25rem",
                   p: "0.25rem 1rem",
-                  "& .MuiSvgIcon-root:": {
+                  "& .MuiSvgIcon-root": {
                     pr: "0.25rem",
                     width: "3rem",
                   },
@@ -180,7 +185,7 @@ const NavBar = () => {
                   <Typography>{fullName}</Typography>
                 </MenuItem>
                 <MenuItem onClick={() => dispatch(setLogout())}>
-                  LogOut
+                  Log Out
                 </MenuItem>
               </Select>
             </FormControl>

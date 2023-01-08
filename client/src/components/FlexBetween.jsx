@@ -1,5 +1,5 @@
-import { Box } from "@mui/mertial";
-import { style } from "@mui/system";
+import { Box } from "@mui/material";
+import { styled } from "@mui/system";
 //Reused CSS
 const FlexBetween = styled(Box)({
   //Box Component allows passing of CSS
