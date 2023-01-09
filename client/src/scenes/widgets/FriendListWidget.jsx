@@ -17,10 +17,9 @@ const FriendListWidget = ({ userId }) => {
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
-        body: formData,
       }
     );
-    const data = await getFriends.json();
+    const data = await response.json();
     dispatch(setFriends({ friends: data }));
   };
   useEffect(() => {

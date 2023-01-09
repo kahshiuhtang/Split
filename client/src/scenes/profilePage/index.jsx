@@ -18,7 +18,6 @@ const ProfilePage = () => {
     const response = await fetch(`http://localhost:3001/users/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
-      body: formData,
     });
     const data = await response.json();
     setUser(data);
@@ -34,11 +33,11 @@ const ProfilePage = () => {
       <Box
         width="100%"
         padding="2rem 6%"
-        display={isNonMobileScreens ? "flex" : "block"}
+        display={isNonMobileScreen ? "flex" : "block"}
         gap="2rem"
         justifyContent="center"
       >
-        <Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
+        <Box flexBasis={isNonMobileScreen ? "26%" : undefined}>
           <UserWidget
             userId={userId}
             picturePath={user.picturePath}
@@ -47,8 +46,8 @@ const ProfilePage = () => {
           <FriendListWidget userId={userId} />
         </Box>
         <Box
-          flexBasis={isNonMobileScreens ? "42%" : undefined}
-          mt={isNonMobileScreens ? undefined : "2rem"}
+          flexBasis={isNonMobileScreen ? "42%" : undefined}
+          mt={isNonMobileScreen ? undefined : "2rem"}
         >
           <MyPostWidget picturePath={user.picturePath} />
           <Box m="2rem 0" />

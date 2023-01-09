@@ -3,7 +3,6 @@ import {
   DeleteOutlined,
   AttachFileOutlined,
   GifBoxOutlined,
-  ImageOutlined,
   MicOutlined,
   MoreHorizOutlined,
 } from "@mui/icons-material";
@@ -126,7 +125,7 @@ const MyPostWidget = ({ picturePath }) => {
       )}
       <Divider sx={{ margin: "1.25rem 0" }} />
       <FlexBetween>
-        <FlexBetween gap="0.25rem" onCLick={() => setIsImage()}>
+        <FlexBetween gap="0.25rem" onClick={() => setIsImage()}>
           <Typography
             color={mediumMain}
             sx={{ "&:hover": { cursor: "pointer", color: medium } }}

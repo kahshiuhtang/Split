@@ -1,4 +1,5 @@
 import Post from "../models/Post.js";
+import User from "../models/User.js";
 
 /* CREATE */
 export const createPost = async (req, res) => {
@@ -50,20 +51,21 @@ export const likePost = async (req, res) => {
     const { id } = req.params;
     const { userId } = req.body;
     const post = await Post.findById(id);
-    const isLiked = post.likes.get(userId); //Check if user has already liked the post
+    const isLiked = post.likes.get(userId);
+
     if (isLiked) {
-      //If so, then delete like
       post.likes.delete(userId);
     } else {
-      //Else add like
       post.likes.set(userId, true);
     }
+
     const updatedPost = await Post.findByIdAndUpdate(
       id,
       { likes: post.likes },
       { new: true }
     );
-    res.status(200).json(updatedPost); //Update FrondEnd
+
+    res.status(200).json(updatedPost);
   } catch (err) {
     res.status(404).json({ message: err.message });
   }

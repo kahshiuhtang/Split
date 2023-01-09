@@ -8,7 +8,7 @@ import UserImage from "./UserImage";
 
 const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const { palette } = useTheme();
-  const primaryLight = palette.palette.light;
+  const primaryLight = palette.primary.light;
   const primaryDark = palette.primary.dark;
   const main = palette.neutral.main;
   const medium = palette.neutral.medium;

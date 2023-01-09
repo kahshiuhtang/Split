@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import MyPostWidget from "scenes/widgets/MyPostWidget";
 import AdvertWidget from "scenes/widgets/AdvertWidget";
 import FriendListWidget from "scenes/widgets/FriendListWidget";
+import PostsWidget from "scenes/widgets/PostsWidget";
 
 const HomePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
